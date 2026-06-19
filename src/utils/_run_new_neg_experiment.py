@@ -21,6 +21,9 @@ print("STEP 1: ESM-2 150M embedding for new short secreted negatives")
 print("=" * 60)
 
 import esm
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 model, alphabet = esm.pretrained.load_model_and_alphabet("esm2_t30_150M_UR50D")
 device = torch.device("cpu")

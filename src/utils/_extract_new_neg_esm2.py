@@ -154,6 +154,9 @@ print("=" * 60)
 
 import xgboost as xgb
 from sklearn.metrics import roc_auc_score, f1_score, matthews_corrcoef, accuracy_score
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 def train_eval(ds_name):

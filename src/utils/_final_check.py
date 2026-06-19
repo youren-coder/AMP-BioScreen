@@ -68,6 +68,9 @@ for n in fig_nums:
 secs = re.findall(r'^#{2,4}\s+(\d[\d.]*)', content, re.MULTILINE)
 # Check for duplicate or missing section numbers
 from collections import Counter
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 sec_counts = Counter(secs)
 for s, c in sec_counts.items():

@@ -1,5 +1,8 @@
 ﻿"""Fix early_stopping_rounds for xgboost 3.x"""
 import os
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 p = PROJECT_ROOT / "src/06_train_xgboost.py"

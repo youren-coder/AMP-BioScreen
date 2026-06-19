@@ -13,6 +13,9 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.metrics import roc_auc_score, f1_score, matthews_corrcoef, accuracy_score
 import xgboost as xgb
 from peptides import Peptide
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 PROCESSED = PROCESSED_DIR

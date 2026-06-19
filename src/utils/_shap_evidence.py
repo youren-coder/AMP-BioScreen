@@ -65,6 +65,9 @@ print(f"4. Charge+HM -> top-5 ESM dim SHAP: R^2 < 0.08 (SHAP signal irreducible 
 
 # Also compute: what fraction of SHAP variance is explained by physchem features?
 import shap, xgboost as xgb, json
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 # Load trained model and compute SHAP

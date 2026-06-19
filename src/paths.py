@@ -19,3 +19,6 @@ TOOLS_DIR = _PROJECT_ROOT / "tools"
 # Ensure directories exist
 for d in [DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR, TOOLS_DIR]:
     d.mkdir(parents=True, exist_ok=True)
+
+# Public alias
+PROJECT_ROOT = _PROJECT_ROOT

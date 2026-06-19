@@ -12,6 +12,9 @@ import shap
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 PROCESSED = PROCESSED_DIR

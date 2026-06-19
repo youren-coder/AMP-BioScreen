@@ -47,6 +47,9 @@ for kw in ['校园网', '校园', '遗憾', 'TMP', '~~']:
 # Check section numbers for duplicates
 sec_nums = re.findall(r'^(#{2,4})\s+([\d.]+)', content, re.MULTILINE)
 from collections import Counter
+import sys, os
+_utils_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_utils_dir, '..'))
 from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 sec_counts = Counter(n for _, n in sec_nums)
 for n, c in sec_counts.items():
