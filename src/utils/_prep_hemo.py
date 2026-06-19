@@ -1,8 +1,9 @@
 ﻿import pandas as pd, numpy as np
 from pathlib import Path
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 # Hemolytik2 has activity column: "Hemolytic" vs "Not Hemolytic" vs empty
-df = pd.read_csv("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
+df = pd.read_csv(DATABASE_DIR / "hemolytik2_complete.csv")
 df['seq'] = df['seq'].str.upper().str.strip()
 
 # Activity distribution
@@ -19,7 +20,7 @@ uniq = df.groupby('seq')['hemo_label'].max().reset_index()
 print(f"\nUnique sequences: {len(uniq)}, hemolytic={uniq['hemo_label'].sum()}")
 
 # Check how many we need to extract ESM-2 for
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
 
 # Load existing ESM-2 embeddings

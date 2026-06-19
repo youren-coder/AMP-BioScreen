@@ -1,4 +1,4 @@
-﻿path = 'D:/Research_AI_Bio/07_Reports/论文初稿.md'
+﻿path = str(PROJECT_ROOT / "reports/manuscript.md")
 with open(path, 'r', encoding='utf-8') as f:
     content = f.read()
 
@@ -13,6 +13,7 @@ else:
 
 # Also check abstract for 0.064, 0.015, 0.082
 import re
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 for m in re.finditer(r'.{0,30}(0\.064|0\.082|0\.015).{0,30}', content):
     ctx = content[max(0,m.start()-30):m.end()+30]
     print(f'Remaining old number: {m.group(1)}: ...{ctx}...')

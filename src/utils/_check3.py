@@ -1,4 +1,4 @@
-﻿path = 'D:/Research_AI_Bio/07_Reports/论文初稿.md'
+﻿path = str(PROJECT_ROOT / "reports/manuscript.md")
 with open(path, 'r', encoding='utf-8') as f:
     content = f.read()
 import re
@@ -47,6 +47,7 @@ for kw in ['校园网', '校园', '遗憾', 'TMP', '~~']:
 # Check section numbers for duplicates
 sec_nums = re.findall(r'^(#{2,4})\s+([\d.]+)', content, re.MULTILINE)
 from collections import Counter
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 sec_counts = Counter(n for _, n in sec_nums)
 for n, c in sec_counts.items():
     if c > 1:

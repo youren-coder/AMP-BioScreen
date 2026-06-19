@@ -1,4 +1,5 @@
-﻿path = 'D:/Research_AI_Bio/07_Reports/论文初稿.md'
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
+﻿path = str(PROJECT_ROOT / "reports/manuscript.md")
 with open(path, 'r', encoding='utf-8') as f:
     content = f.read()
 

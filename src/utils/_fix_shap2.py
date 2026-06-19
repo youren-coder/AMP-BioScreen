@@ -1,8 +1,9 @@
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 ﻿import sys, io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
-path = 'D:/Research_AI_Bio/07_Reports/论文初稿.md'
+path = str(PROJECT_ROOT / "reports/manuscript.md")
 with open(path, 'r', encoding='utf-8') as f:
     content = f.read()
 

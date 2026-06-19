@@ -1,7 +1,8 @@
-﻿path = 'D:/Research_AI_Bio/07_Reports/论文初稿.md'
+﻿path = str(PROJECT_ROOT / "reports/manuscript.md")
 with open(path, 'r', encoding='utf-8') as f:
     content = f.read()
 import re
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 # ISSUE 1: Find remaining AUC 0.987
 for m in re.finditer(r'.{0,40}AUC.{0,5}0\.987.{0,40}', content):

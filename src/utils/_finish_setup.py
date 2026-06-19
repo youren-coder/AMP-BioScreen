@@ -1,7 +1,8 @@
 """Setup finish script - fixes all remaining issues and cleans up"""
 import os, subprocess, sys
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-BASE = "D:/Research_AI_Bio/01_Projects/AMP-BioScreen"
+BASE = str(PROJECT_ROOT)
 VENV_PY = os.path.join(BASE, ".venv", "Scripts", "python.exe")
 
 def run(cmd):
@@ -46,7 +47,7 @@ if err:
     print("STDERR:", err[-300:])
 
 # 4. Verify output files
-feat_dir = "D:/Research_AI_Bio/03_Datasets/Processed/features"
+feat_dir = str(FEATURE_DIR)
 for f in os.listdir(feat_dir):
     size = os.path.getsize(os.path.join(feat_dir, f))
     print(f"  {f}: {size} bytes")

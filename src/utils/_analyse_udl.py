@@ -1,9 +1,10 @@
 ﻿import numpy as np, pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 # Load UniDL4BioPep training data stats
-train_udl = pd.read_csv("D:/Research_AI_Bio/08_Tools/UniDL4BioPep_AMP/AMP_train.csv")
+train_udl = pd.read_csv(TOOLS_DIR / "UniDL4BioPep_AMP/AMP_train.csv")
 pos = train_udl[train_udl["label"] == 1]
 neg = train_udl[train_udl["label"] == 0]
 
@@ -25,9 +26,9 @@ auc_length_only = roc_auc_score(all_labels, y_prob)
 print(f"\nLength-only AUC on UniDL4BioPep training data: {auc_length_only:.4f}")
 
 # Compare: our training data length-only AUC
-our_pos = pd.read_csv("D:/Research_AI_Bio/03_Datasets/Processed/amp_data_new_neg.csv")
+our_pos = pd.read_csv(PROCESSED_DIR / "amp_data_new_neg.csv")
 our_pos = our_pos[our_pos["label_amp"] == 1]
-our_neg = pd.read_csv("D:/Research_AI_Bio/03_Datasets/Processed/amp_data_new_neg.csv")
+our_neg = pd.read_csv(PROCESSED_DIR / "amp_data_new_neg.csv")
 our_neg = our_neg[our_neg["label_amp"] == 0]
 our_pl = our_pos["sequence"].str.len()
 our_nl = our_neg["sequence"].str.len()

@@ -24,6 +24,7 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 import warnings, time, os, sys
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 warnings.filterwarnings("ignore")
 
@@ -151,7 +152,7 @@ if IN_COLAB:
 # 
 # 将下载的 .npy 文件放到:
 # ```
-# D:/Research_AI_Bio/03_Datasets/Processed/features/
+# See paths.py: FEATURE_DIR. Upload your *.npy files to the features/ directory.
 # ```
 # 
 # 然后运行:

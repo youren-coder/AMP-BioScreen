@@ -3,7 +3,7 @@ from pathlib import Path
 from sklearn.linear_model import LinearRegression, Ridge
 from sklearn.model_selection import cross_val_score
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
 
 # Load data
@@ -65,6 +65,7 @@ print(f"4. Charge+HM -> top-5 ESM dim SHAP: R^2 < 0.08 (SHAP signal irreducible 
 
 # Also compute: what fraction of SHAP variance is explained by physchem features?
 import shap, xgboost as xgb, json
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 # Load trained model and compute SHAP
 y_train = np.load(FEATURES / "amp_train_y_amp_new_neg.npy")

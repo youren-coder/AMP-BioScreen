@@ -14,11 +14,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from pathlib import Path
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 warnings.filterwarnings("ignore")
 
-FEATURE_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed/features")
-FIGURE_DIR = Path("D:/Research_AI_Bio/06_Figures")
 FIGURE_DIR.mkdir(parents=True, exist_ok=True)
 
 

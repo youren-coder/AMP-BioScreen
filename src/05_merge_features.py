@@ -8,8 +8,8 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-FEATURE_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed/features")
 
 PHYSIO_FILES = {
     "train": FEATURE_DIR / "features_physicochem_train.csv",

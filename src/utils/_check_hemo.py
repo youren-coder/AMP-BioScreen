@@ -1,8 +1,9 @@
 ﻿import pandas as pd, numpy as np
 from pathlib import Path
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 # Check hemolysis data
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
 
 # Load hemolysis labels
@@ -16,7 +17,7 @@ print(f"  Val: {y_hem_val.shape}, values: {np.unique(y_hem_val, return_counts=Tr
 print(f"  Test: {y_hem_test.shape}, values: {np.unique(y_hem_test, return_counts=True)}")
 
 # Check Hemolytik2 data
-hemo_df = pd.read_csv("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
+hemo_df = pd.read_csv(DATABASE_DIR / "hemolytik2_complete.csv")
 print(f"\nHemolytik2 raw: {hemo_df.shape}")
 print(f"Columns: {list(hemo_df.columns)[:10]}")
 print(f"First few rows:")

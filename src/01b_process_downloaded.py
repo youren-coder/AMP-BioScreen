@@ -9,9 +9,10 @@ import numpy as np
 import random, csv, json
 from pathlib import Path
 from sklearn.model_selection import train_test_split
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-RAW_DIR = Path("D:/Research_AI_Bio/02_Databases")
-OUTPUT_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+RAW_DIR = DATABASE_DIR
+OUTPUT_DIR = PROCESSED_DIR
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 VALID_AA = set("ACDEFGHIKLMNPQRSTVWY")

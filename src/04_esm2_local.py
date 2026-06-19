@@ -14,10 +14,11 @@ import numpy as np
 import torch
 import pandas as pd
 from pathlib import Path
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 warnings.filterwarnings("ignore")
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURE_DIR = PROCESSED / "features"
 FEATURE_DIR.mkdir(parents=True, exist_ok=True)
 

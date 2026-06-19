@@ -5,9 +5,10 @@ import numpy as np, pandas as pd, os, json
 import tensorflow as tf
 import joblib, torch, esm
 from sklearn.metrics import roc_auc_score, f1_score, matthews_corrcoef, accuracy_score
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-MODEL_DIR = "D:/Research_AI_Bio/08_Tools/UniDL4BioPep_AMP"
-OUT_DIR = "D:/Research_AI_Bio/03_Datasets/Processed/features"
+MODEL_DIR = TOOLS_DIR / "UniDL4BioPep_AMP"
+OUT_DIR = str(FEATURE_DIR)
 
 # Load UniDL4BioPep model and scaler
 print("Loading UniDL4BioPep model...")
@@ -51,21 +52,21 @@ results = {}
 
 # Test 1: Short secreted negatives
 print("\n--- Test 1: Short secreted negatives ---")
-df = pd.read_csv("D:/Research_AI_Bio/03_Datasets/Processed/amp_test_new_neg.csv")
+df = pd.read_csv(PROCESSED_DIR / "amp_test_new_neg.csv")
 r = extract_and_predict(df["sequence"].str.upper().str.strip().tolist(), df["label_amp"].values)
 results["UniDL4BioPep_short_secreted_neg"] = r
 print(f"AUC={r['auc']:.4f} F1={r['f1']:.4f} MCC={r['mcc']:.4f} ACC={r['acc']:.4f}")
 
 # Test 2: Old full-length negatives  
 print("\n--- Test 2: Old full-length negatives ---")
-df = pd.read_csv("D:/Research_AI_Bio/03_Datasets/Processed/amp_test_real.csv")
+df = pd.read_csv(PROCESSED_DIR / "amp_test_real.csv")
 r = extract_and_predict(df["sequence"].str.upper().str.strip().tolist(), df["label_amp"].values)
 results["UniDL4BioPep_old_full_length_neg"] = r
 print(f"AUC={r['auc']:.4f} F1={r['f1']:.4f} MCC={r['mcc']:.4f} ACC={r['acc']:.4f}")
 
 # Test 3: Strict length-matched
 print("\n--- Test 3: Strict length-matched ---")
-df = pd.read_csv("D:/Research_AI_Bio/03_Datasets/Processed/amp_data_length_matched.csv")
+df = pd.read_csv(PROCESSED_DIR / "amp_data_length_matched.csv")
 r = extract_and_predict(df["sequence"].str.upper().str.strip().tolist(), df["label_amp"].values)
 results["UniDL4BioPep_length_matched"] = r
 print(f"AUC={r['auc']:.4f} F1={r['f1']:.4f} MCC={r['mcc']:.4f} ACC={r['acc']:.4f}")

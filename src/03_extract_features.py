@@ -8,8 +8,9 @@ os.environ["PYTHONWARNINGS"] = "ignore"
 warnings.filterwarnings("ignore")
 
 from peptides import Peptide
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURE_DIR = PROCESSED / "features"
 FEATURE_DIR.mkdir(parents=True, exist_ok=True)
 

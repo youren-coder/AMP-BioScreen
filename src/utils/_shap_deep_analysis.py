@@ -12,10 +12,11 @@ import shap
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
-FIGS = Path("D:/Research_AI_Bio/06_Figures")
+FIGS = FIGURE_DIR
 
 # Load data
 X_train = np.nan_to_num(np.load(FEATURES / "amp_train_X_150m_new_neg.npy").astype(np.float32), nan=0.0)

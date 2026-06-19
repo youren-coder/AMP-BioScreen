@@ -8,13 +8,14 @@ from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_auc_score
 import xgboost as xgb
 import json
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
 
 # Load labels - filter to only valid amino acid sequences
 VALID_AA = set("ACDEFGHIKLMNPQRSTVWY")
-df = pd.read_csv("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
+df = pd.read_csv(DATABASE_DIR / "hemolytik2_complete.csv")
 df['seq'] = df['seq'].str.upper().str.strip()
 
 # Filter: only sequences with standard amino acids, length 5-100

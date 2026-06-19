@@ -13,8 +13,9 @@ from sklearn.model_selection import train_test_split, StratifiedKFold
 from sklearn.metrics import roc_auc_score, f1_score, matthews_corrcoef, accuracy_score
 import xgboost as xgb
 from peptides import Peptide
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
 FEATURES.mkdir(parents=True, exist_ok=True)
 

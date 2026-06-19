@@ -21,7 +21,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler
 import xgboost as xgb
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
 FEATURES.mkdir(parents=True, exist_ok=True)
 
@@ -174,6 +174,7 @@ print(f"\nSaved: direct_benchmark_results.json")
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 fig, ax = plt.subplots(figsize=(9, 7))
 colors = ['#9E9E9E', '#FF9800', '#2196F3', '#4CAF50', '#F44336', '#9C27B0', '#795548']
@@ -204,7 +205,7 @@ ax.set_xlim([-0.02, 1.02])
 ax.set_ylim([-0.02, 1.02])
 ax.grid(True, alpha=0.3)
 
-FIGS = Path("D:/Research_AI_Bio/06_Figures")
+FIGS = FIGURE_DIR
 fig.savefig(str(FIGS / "direct_benchmark_all_methods.png"), dpi=600, bbox_inches='tight')
 print("Saved: direct_benchmark_all_methods.png")
 

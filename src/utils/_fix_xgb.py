@@ -1,7 +1,8 @@
 ﻿"""Fix early_stopping_rounds for xgboost 3.x"""
 import os
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-p = "D:/Research_AI_Bio/01_Projects/AMP-BioScreen/src/06_train_xgboost.py"
+p = PROJECT_ROOT / "src/06_train_xgboost.py"
 with open(p, encoding="utf-8") as f:
     src = f.read()
 

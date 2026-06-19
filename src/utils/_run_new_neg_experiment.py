@@ -9,7 +9,7 @@ from modlamp.descriptors import PeptideDescriptor
 warnings.filterwarnings("ignore")
 os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURE_DIR = PROCESSED / "features"
 FEATURE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -21,6 +21,7 @@ print("STEP 1: ESM-2 150M embedding for new short secreted negatives")
 print("=" * 60)
 
 import esm
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 model, alphabet = esm.pretrained.load_model_and_alphabet("esm2_t30_150M_UR50D")
 device = torch.device("cpu")
 model = model.to(device).eval()
@@ -28,7 +29,7 @@ embed_dim = model.embed_dim
 print(f"Model: esm2_t30_150M_UR50D, dim={embed_dim}")
 
 # Load new negatives (the 600 matched ones)
-new_neg_all = pd.read_csv("D:/Research_AI_Bio/02_Databases/neg_short_secreted_matched.csv")
+new_neg_all = pd.read_csv(DATABASE_DIR / "neg_short_secreted_matched.csv")
 new_seqs = new_neg_all["sequence"].str.upper().str.strip().tolist()
 print(f"Sequences to embed: {len(new_seqs)}")
 
@@ -145,7 +146,7 @@ with open(FEATURE_DIR / "comprehensive_results.json") as f:
 # We need to compute the SAME 16 physchem features for new negatives
 # Let me just read the original feature extraction code
 print("\nReading original feature extraction to replicate physchem...")
-with open("D:/Research_AI_Bio/01_Projects/AMP-BioScreen/src/03_extract_features.py", "r", encoding="utf-8") as f:
+with open(PROJECT_ROOT / "src/03_extract_features.py", "r", encoding="utf-8") as f:
     feat_code = f.read()
     
 # Extract the feature computation part

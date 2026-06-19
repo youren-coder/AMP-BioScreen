@@ -1,9 +1,10 @@
 """Create new dataset with real non-AMP negative samples"""
 import pandas as pd, os
 from sklearn.model_selection import train_test_split
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-PROCESSED = "D:/Research_AI_Bio/03_Datasets/Processed"
-RAW = "D:/Research_AI_Bio/02_Databases"
+PROCESSED = str(PROCESSED_DIR)
+RAW = str(DATABASE_DIR)
 
 # 1. AMP positives
 amp_df = pd.read_csv(os.path.join(PROCESSED, "amp_data_raw.csv"))

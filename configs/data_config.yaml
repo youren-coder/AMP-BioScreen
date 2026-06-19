@@ -1,46 +1,39 @@
-﻿# AMP-BioScreen 配置文件
-
 data:
-  raw_dir: "D:/Research_AI_Bio/02_Databases"
-  processed_dir: "D:/Research_AI_Bio/03_Datasets/Processed"
-  train_file: "amp_train.csv"
-  val_file: "amp_val.csv"
-  test_file: "amp_test.csv"
-
-preprocessing:
-  min_seq_len: 5
-  max_seq_len: 200
-  cdhit_similarity: 0.9
-  negative_samples: 5000
-
+  processed_dir: data/processed
+  raw_dir: data/databases
+  test_file: amp_test.csv
+  train_file: amp_train.csv
+  val_file: amp_val.csv
 features:
-  esm2_model: "esm2_t12_35M_UR50D"
   esm2_embedding_dim: 1280
-  use_physicochemical: true
+  esm2_model: esm2_t12_35M_UR50D
   physicochemical_count: 35
-
+  use_physicochemical: true
 model:
-  algorithm: "xgboost"
+  algorithm: xgboost
   xgboost_params:
-    n_estimators: 500
-    max_depth: 6
-    learning_rate: 0.05
-    subsample: 0.8
     colsample_bytree: 0.8
-    eval_metric: "auc"
     early_stopping_rounds: 20
+    eval_metric: auc
+    learning_rate: 0.05
+    max_depth: 6
+    n_estimators: 500
     random_state: 42
-
-tasks:
-  step1_amp_classification:
-    target: "label_amp"
-    task_type: "binary"
-  step2_hemolysis_classification:
-    target: "label_hemolysis"
-    task_type: "binary"
-    filter_condition: "label_amp == 1"
-
+    subsample: 0.8
+preprocessing:
+  cdhit_similarity: 0.9
+  max_seq_len: 200
+  min_seq_len: 5
+  negative_samples: 5000
 scoring:
+  add_stability_bonus: false
   amp_weight: 1.0
   hemolysis_penalty: 1.0
-  add_stability_bonus: false
+tasks:
+  step1_amp_classification:
+    target: label_amp
+    task_type: binary
+  step2_hemolysis_classification:
+    filter_condition: label_amp == 1
+    target: label_hemolysis
+    task_type: binary

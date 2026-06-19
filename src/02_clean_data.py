@@ -13,9 +13,10 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 from sklearn.model_selection import train_test_split
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-INPUT_PATH = Path("D:/Research_AI_Bio/03_Datasets/Processed/amp_data_raw.csv")
-OUTPUT_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed/")
+INPUT_PATH = Path(PROCESSED_DIR / "amp_data_raw.csv")
+OUTPUT_DIR = Path(str(PROCESSED_DIR / ""))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 VALID_AA = set("ACDEFGHIKLMNPQRSTVWY")

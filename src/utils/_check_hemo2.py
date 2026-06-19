@@ -1,7 +1,8 @@
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 ﻿import pandas as pd, numpy as np
 
 # Load Hemolytik2 data and check activity column
-df = pd.read_csv("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
+df = pd.read_csv(DATABASE_DIR / "hemolytik2_complete.csv")
 
 # Check activity column values
 act = df['activity'].dropna()

@@ -4,12 +4,13 @@ from sklearn.model_selection import StratifiedKFold, cross_val_score
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 import xgboost as xgb
 import json
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
 
 # Load full Hemolytik2 with hemolysis labels
-df = pd.read_csv("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
+df = pd.read_csv(DATABASE_DIR / "hemolytik2_complete.csv")
 df['seq'] = df['seq'].str.upper().str.strip()
 df['hemo_label'] = (df['activity'].astype(str).str.upper().str.strip() == 'HEMOLYTIC').astype(int)
 

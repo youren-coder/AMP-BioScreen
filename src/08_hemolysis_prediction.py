@@ -10,8 +10,7 @@ from pathlib import Path
 
 warnings.filterwarnings("ignore")
 
-HEMO_CSV = Path("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
-FEATURE_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed/features")
+HEMO_CSV = Path(DATABASE_DIR / "hemolytik2_complete.csv")
 OUTPUT = {}
 
 print("=" * 55)
@@ -113,6 +112,7 @@ print("\n[5/6] 5折交叉验证 (含特征消融)...")
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import roc_auc_score, average_precision_score, f1_score, matthews_corrcoef
 import xgboost as xgb
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 cv_all = {"physio": [], "esm": [], "combined": []}

@@ -1,8 +1,9 @@
 ﻿import pandas as pd, numpy as np
 from pathlib import Path
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 # Map Hemolytik2 labels: hemolytic = 1, non-hemolytic = 0
-df = pd.read_csv("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
+df = pd.read_csv(DATABASE_DIR / "hemolytik2_complete.csv")
 df['seq'] = df['seq'].str.upper().str.strip()
 
 # Label: activity=="Hemolytic" -> 1, everything else -> 0
@@ -11,7 +12,7 @@ print(f"Hemolytic (1): {df['hemo_label'].sum()}")
 print(f"Non-hemolytic (0): {(df['hemo_label']==0).sum()}")
 
 # Cross-reference with our AMP test set
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 test_df = pd.read_csv(PROCESSED / "amp_test_new_neg.csv")
 test_seqs = set(test_df['sequence'].str.upper().str.strip())
 

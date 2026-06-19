@@ -1,4 +1,4 @@
-﻿path = 'D:/Research_AI_Bio/07_Reports/论文初稿.md'
+﻿path = str(PROJECT_ROOT / "reports/manuscript.md")
 with open(path, 'r', encoding='utf-8') as f:
     content = f.read()
 import re
@@ -68,6 +68,7 @@ for n in fig_nums:
 secs = re.findall(r'^#{2,4}\s+(\d[\d.]*)', content, re.MULTILINE)
 # Check for duplicate or missing section numbers
 from collections import Counter
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 sec_counts = Counter(secs)
 for s, c in sec_counts.items():
     if c > 1:

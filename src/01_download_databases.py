@@ -9,11 +9,12 @@ import os, sys, argparse, requests, json, time
 import pandas as pd
 from pathlib import Path
 from tqdm import tqdm
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
-RAW_DIR = Path("D:/Research_AI_Bio/02_Databases").resolve()
+RAW_DIR = DATABASE_DIR.resolve()
 RAW_DIR.mkdir(parents=True, exist_ok=True)
-OUTPUT_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed").resolve()
+OUTPUT_DIR = PROCESSED_DIR.resolve()
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 VALID_AA = set("ACDEFGHIKLMNPQRSTVWY")
@@ -288,7 +289,7 @@ def main():
     print("  1. DRAMP: 访问 http://dramp.cpu-bioinfor.org/downloads/")
     print("  2. APD3:  访问 https://aps.unmc.edu/downloads")
     print("  3. DBAASP: 访问 https://dbaasp.org/download")
-    print("  4. 下载后放到 D:/Research_AI_Bio/02_Databases/")
+    print("  4. 下载后放到 data/databases/ (see paths.py)")
     print("  5. 重新运行本脚本即可自动处理")
 
 

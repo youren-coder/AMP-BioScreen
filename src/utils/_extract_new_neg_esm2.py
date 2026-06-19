@@ -13,7 +13,7 @@ import numpy as np, pandas as pd
 from pathlib import Path
 from peptides import Peptide
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURE_DIR = PROCESSED / "features"
 FEATURE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -21,7 +21,7 @@ FEATURE_DIR.mkdir(parents=True, exist_ok=True)
 # STEP 1: Physchem for 600 new negatives
 # ===================================================================
 print("STEP 1: Physicochemical features...")
-new_neg_df = pd.read_csv("D:/Research_AI_Bio/02_Databases/neg_short_secreted_matched.csv")
+new_neg_df = pd.read_csv(DATABASE_DIR / "neg_short_secreted_matched.csv")
 new_seqs = [s.strip().upper() for s in new_neg_df["sequence"].tolist()]
 
 phys_rows = []
@@ -154,6 +154,7 @@ print("=" * 60)
 
 import xgboost as xgb
 from sklearn.metrics import roc_auc_score, f1_score, matthews_corrcoef, accuracy_score
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 def train_eval(ds_name):
     print(f"\n--- {ds_name} ---")

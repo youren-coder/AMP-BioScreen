@@ -11,10 +11,8 @@ from pathlib import Path
 
 warnings.filterwarnings("ignore")
 
-FEATURE_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed/features")
-HEMO_CSV = Path("D:/Research_AI_Bio/02_Databases/hemolytik2_complete.csv")
-DATA_DIR = Path("D:/Research_AI_Bio/03_Datasets/Processed")
-FIGURE_DIR = Path("D:/Research_AI_Bio/06_Figures")
+HEMO_CSV = Path(DATABASE_DIR / "hemolytik2_complete.csv")
+DATA_DIR = PROCESSED_DIR
 FIGURE_DIR.mkdir(parents=True, exist_ok=True)
 
 # 1. 加载 AMP 模型
@@ -35,6 +33,7 @@ print("\n[1/4] AMP model loaded")
 # 2. 训练溶血模型
 print("\n[2/4] Training hemolysis model on full data...")
 from peptides import Peptide
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
 def extract_physio(seqs):
     rows = []

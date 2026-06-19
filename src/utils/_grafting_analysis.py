@@ -3,10 +3,11 @@ from pathlib import Path
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from paths import PROJECT_ROOT, DATA_DIR, DATABASE_DIR, PROCESSED_DIR, FEATURE_DIR, FIGURE_DIR
 
-PROCESSED = Path("D:/Research_AI_Bio/03_Datasets/Processed")
+PROCESSED = PROCESSED_DIR
 FEATURES = PROCESSED / "features"
-FIGS = Path("D:/Research_AI_Bio/06_Figures")
+FIGS = FIGURE_DIR
 
 # Load AMP data
 amp_data = pd.read_csv(PROCESSED / "amp_data_new_neg.csv")
