@@ -159,3 +159,5 @@ if IN_COLAB:
 # ```
 # python src/05_merge_features.py
 # ```
+
+# Note: This script is designed for Google Colab GPU. For local CPU, use 04_esm2_local.py.
